@@ -99,7 +99,7 @@ const Wheel = () => {
             loadedImages.forEach((img, i) => {
               const meta = chart.getDatasetMeta(0).data[i];
               const { x, y } = meta.tooltipPosition(); // Obtiene la posición del centro del segmento
-              const size = 60; // Tamaño de la imagen
+              const size = 50; // Tamaño de la imagen
               const halfSize = size / 2;
 
               ctx.save();

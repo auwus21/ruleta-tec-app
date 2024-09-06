@@ -1,0 +1,60 @@
+/* formulario.css */
+#formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra horizontalmente el formulario */
+    height: 100vh;
+    width: 100%;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #002f4f; /* Fondo oscuro para un buen contraste */
+    color: #dcefff; /* Texto en color claro para resaltar sobre el fondo oscuro */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  button[type="submit"] {
+    background-color: #d7336f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #006b9f;
+  }
+  
+  @media screen and (max-width: 400px) {
+    form {
+      max-width: 90%;
+    }
+  }
+  
+  .term {
+    margin-top: 5%;
+    font-size: small;
+  }
+  

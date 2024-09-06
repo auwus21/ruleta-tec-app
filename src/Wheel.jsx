@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import "./Wheel.css"; // Importa el archivo CSS
+import "./wheel.css"; // Importa el archivo CSS
 
 const Wheel = () => {
   const wheelRef = useRef(null); // Referencia al canvas

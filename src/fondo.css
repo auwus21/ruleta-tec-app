@@ -12,7 +12,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(img/fondo.png);
+    background-image: url('/img/fondo.png');
+
     background-size: cover; /* Ajusta el tamaño del fondo para cubrir el área sin estirarse */
     background-position: center; /* Centra la imagen en el fondo */
     background-repeat: no-repeat; /* Evita que la imagen se repita */

@@ -12,8 +12,9 @@ const Wheel = () => {
   const [imagesLoaded, setImagesLoaded] = useState(false); // Estado para saber si las imágenes se han cargado
   const [hasSpun, setHasSpun] = useState(false); // Controla si el usuario ya giró la ruleta
 
-  const audioRef = useRef(new Audio("src/sounds/roulete.wav")); // Audio del giro de la ruleta
-  const winSoundRef = useRef(new Audio("src/sounds/win.wav")); // Audio para cuando sale confeti
+  const audioRef = useRef(new Audio("/sounds/roulete.wav"));
+  const winSoundRef = useRef(new Audio("/sounds/win.wav"));
+  
 
   // Ruta de las imágenes que se mostrarán en cada segmento
   const imageSources = [

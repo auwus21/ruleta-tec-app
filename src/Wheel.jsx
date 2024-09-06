@@ -12,12 +12,12 @@ const Wheel = () => {
 
   // Ruta de las imágenes que se mostrarán en cada segmento
   const imageSources = [
-    "src/img/iphone.png", // Imagen para el segmento 1
-    "src/img/descuento.png", // Imagen para el segmento 2
-    "src/img/calavera.png", // Imagen para el segmento 3
-    "src/img/objetomisterioso.png", // Imagen para el segmento 4
-    "src/img/airpods.png", // Imagen para el segmento 5
-    "src/img/gabi.png", // Imagen para el segmento 6
+    "https://media.discordapp.net/attachments/1136473401800794133/1281430350869958757/Apple-iPhone-14-Pro-iPhone-14-Pro-Max-deep-purple-220907-geo_inline.jpg.large-Photoroom.png-Photoroo.png?ex=66dbb083&is=66da5f03&hm=7801362d8c7d8124a40282a640844def065d6c6dbb2c57e971163f096b57ec86&=&format=webp&quality=lossless&width=479&height=670", // Imagen para el segmento 1
+    "https://media.discordapp.net/attachments/1136473401800794133/1281429125630005260/descuento.png?ex=66dbaf5f&is=66da5ddf&hm=75be0c2740c5428e60075715470bd4a1bd63312251153d8c89b5f1fd0f08d3d5&=&format=webp&quality=lossless&width=261&height=261", // Imagen para el segmento 2
+    "https://media.discordapp.net/attachments/1136473401800794133/1281429125281874013/calavera.png?ex=66dbaf5f&is=66da5ddf&hm=4978771507c2ccbd3e4ec85e7dd376a476792717e009b0ef4e3bc60c6ee3146e&=&format=webp&quality=lossless&width=261&height=261", // Imagen para el segmento 3
+    "https://media.discordapp.net/attachments/1136473401800794133/1281429125013311539/objetomisterioso.png?ex=66dbaf5f&is=66da5ddf&hm=b5a8c54b36acd2b61e3fc332994d814a5bdbc450d851ba1d05eeea0cdf6a648c&=&format=webp&quality=lossless&width=261&height=261", // Imagen para el segmento 4
+    "https://media.discordapp.net/attachments/1136473401800794133/1281429124803723334/airpods.png?ex=66dbaf5f&is=66da5ddf&hm=b4ddcf5233bb8473b632a42645660ad465c7a9153e842d575b962ddd3b8f25da&=&format=webp&quality=lossless&width=261&height=261", // Imagen para el segmento 5
+    "https://media.discordapp.net/attachments/1136473401800794133/1281429124539219968/gabi.png?ex=66dbaf5f&is=66da5ddf&hm=b590d0a4e37066d016f6ad2e0ac63acf3e135c813e4cf9df5c2d93b5ed076a44&=&format=webp&quality=lossless&width=285&height=642", // Imagen para el segmento 6
   ];
 
   const rotationValues = [
@@ -168,7 +168,7 @@ const Wheel = () => {
         <button id="spin-btn" onClick={spinWheel} disabled={isSpinning}>
           Girar
         </button>
-        <img src="src/img/ruleta.svg" alt="spinner-arrow" />
+        <img src="https://media.discordapp.net/attachments/1136473401800794133/1281429979657277563/ruleta_1.png?ex=66dbb02a&is=66da5eaa&hm=967a4069e38c0610b235a34fdd8419b65348cb805e6bf1fa95a1c8b8a23a4cfa&=&format=webp&quality=lossless&width=48&height=48" alt="spinner-arrow" />
       </div>
       <div id="final-value">
         <p>{finalValue}</p>

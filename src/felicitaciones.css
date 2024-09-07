@@ -1,173 +1,227 @@
 /* Animación de aparición para el fondo oscurecido */
 .felicitaciones-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Oscurece el fondo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    animation: fadeIn 0.5s ease-in-out; /* Animación de desvanecimiento para la capa oscura */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Oscurece el fondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-in-out; /* Animación de desvanecimiento */
+}
+
+/* Contenedor del mensaje de felicitaciones con resplandor RGB */
+.felicitaciones-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #8b35bc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 400px;
+  max-width: 90%; /* Asegura que no exceda el ancho en pantallas pequeñas */
+  text-align: center;
+  z-index: 1001;
+  animation: scaleUp 0.5s ease-in-out, rgbGlow 3s ease-in-out infinite;
+}
+
+.agradecimiento-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #8b35bc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  z-index: 1001;
+  animation: scaleUp 0.5s ease-in-out;
+}
+
+.agradecimiento-container h2 {
+  margin-bottom: 20px; /* Espaciado más grande entre el título y la descripción */
+}
+
+.social-buttons {
+  margin-top: 20px; /* Espaciado superior para los íconos */
+  display: flex;
+  justify-content: space-around;
+  width: 100px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.continuar-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #8b35bc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.continuar-btn:hover {
+  background-color: #8b35bc;
+}
+
+.felicitaciones-container h2 {
+  color: #8b35bc;
+  font-size: 24px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-right: 0.15em solid #8b35bc;
+  white-space: nowrap;
+  width: 0;
+  animation: typeEffect 3s steps(30) forwards;
+}
+
+.imagen-premio {
+  max-width: 150px;
+  margin: 10px 0;
+  object-fit: contain;
+  animation: zoomIn 0.7s ease-in-out;
+}
+
+.premio-container p {
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+  animation: fadeIn 0.8s ease-in-out, highlightText 1.5s 1s ease-in-out infinite;
+}
+
+/* Animaciones definidas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  /* Contenedor del mensaje de felicitaciones con resplandor RGB */
-  .felicitaciones-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #4caf50;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    width: 400px;
-    text-align: center;
-    z-index: 1001;
-    animation: scaleUp 0.5s ease-in-out, rgbGlow 3s ease-in-out infinite;
+  to {
+    opacity: 1;
   }
-  
-  /* Pantalla de agradecimiento */
-  .agradecimiento-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #4caf50;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    width: 400px;
-    text-align: center;
-    z-index: 1001;
-    animation: scaleUp 0.5s ease-in-out;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.7);
   }
-  
-  .agradecimiento-container h2 {
-    margin-bottom: 20px; /* Espaciado más grande entre el título y la descripción */
+  to {
+    transform: scale(1);
   }
-  
-  .social-buttons {
-    margin-top: 20px; /* Espaciado superior para los íconos */
-    display: flex;
-    justify-content: space-around;
-    width: 100px;
-  }
-  
-  .social-icon {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-  }
-  
-  .continuar-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #4caf50;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    animation: fadeIn 0.8s ease-in-out;
-  }
-  
-  .continuar-btn:hover {
-    background-color: #45a049;
-  }
-  
-  /* Animación de aparición para el título con efecto de escritura */
-  .felicitaciones-container h2 {
-    color: #4caf50;
-    font-size: 24px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    border-right: 0.15em solid #4caf50;
-    white-space: nowrap;
+}
+
+@keyframes typeEffect {
+  from {
     width: 0;
-    animation: typeEffect 3s steps(30) forwards;
   }
-  
-  /* Animación de aparición para la imagen */
-  .imagen-premio {
-    max-width: 150px;
-    margin: 10px 0;
-    object-fit: contain;
-    animation: zoomIn 0.7s ease-in-out;
+  to {
+    width: 100%;
   }
-  
-  /* Animación de aparición para el texto del premio */
-  .premio-container p {
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Resplandor RGB aplicado al contenedor externo */
+@keyframes rgbGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.4);
+  }
+  33% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6), 0 0 30px rgba(0, 255, 0, 0.4);
+  }
+  66% {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.8), 0 0 20px rgba(0, 0, 255, 0.6), 0 0 30px rgba(0, 0, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.4);
+  }
+}
+
+@keyframes highlightText {
+  0%, 100% {
     font-size: 18px;
-    color: #333;
-    margin-top: 10px;
-    animation: fadeIn 0.8s ease-in-out, highlightText 1.5s 1s ease-in-out infinite;
   }
-  
-  /* Animaciones definidas */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  50% {
+    font-size: 20px;
   }
-  
-  @keyframes scaleUp {
-    from {
-      transform: scale(0.7);
-    }
-    to {
-      transform: scale(1);
-    }
+}
+
+/* Ajustes para pantallas medianas y pequeñas */
+@media (max-width: 768px) {
+  .felicitaciones-container,
+  .agradecimiento-container {
+    width: 80%;
+    padding: 15px; /* Reduce el padding para pantallas más pequeñas */
   }
-  
-  @keyframes typeEffect {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
+
+  .social-buttons {
+    width: 80px;
   }
-  
-  @keyframes zoomIn {
-    from {
-      transform: scale(0.5);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
+
+  .social-icon {
+    width: 35px;
+    height: 35px;
   }
-  
-  /* Resplandor RGB aplicado al contenedor externo */
-  @keyframes rgbGlow {
-    0% {
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.4);
-    }
-    33% {
-      box-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6), 0 0 30px rgba(0, 255, 0, 0.4);
-    }
-    66% {
-      box-shadow: 0 0 10px rgba(0, 0, 255, 0.8), 0 0 20px rgba(0, 0, 255, 0.6), 0 0 30px rgba(0, 0, 255, 0.4);
-    }
-    100% {
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.4);
-    }
+
+  .continuar-btn {
+    padding: 8px 15px; /* Reduce el tamaño del botón en pantallas más pequeñas */
+    font-size: 14px;
   }
-  
-  /* Resaltado para el texto del premio */
-  @keyframes highlightText {
-    0%, 100% {
-      font-size: 18px;
-    }
-    50% {
-      font-size: 20px;
-    }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+  .felicitaciones-container,
+  .agradecimiento-container {
+    width: 90%; /* Asegura que el contenedor se ajuste en pantallas pequeñas */
+    padding: 10px;
   }
-  
+
+  .social-buttons {
+    width: 70px; /* Ajusta el tamaño de los íconos en móviles */
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .continuar-btn {
+    font-size: 12px; /* Ajusta el tamaño del botón en móviles */
+    padding: 7px 12px;
+  }
+
+  .felicitaciones-container h2 {
+    font-size: 20px; /* Ajusta el tamaño del título */
+  }
+
+  .premio-container p {
+    font-size: 16px; /* Ajusta el tamaño del texto */
+  }
+
+  .imagen-premio {
+    max-width: 120px; /* Ajusta el tamaño de la imagen del premio */
+  }
+}

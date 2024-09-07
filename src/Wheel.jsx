@@ -36,6 +36,9 @@ const Wheel = ({ onPremioGanado }) => {
     { minDegree: 331, maxDegree: 360, value: "Un 10% de descuento para tu próxima compra", image: "/img/descuento.png" }, //2
   ];
 
+  // Definir probabilidades en porcentaje para cada segmento
+  const probabilities = [1, 1, 1, 1, 1, 95]; // Porcentajes asignados a cada segmento
+
   const data = [16, 16, 16, 16, 16, 16];
   const pieColors = ["#8b35bc", "#b163da", "#8b35bc", "#b163da", "#8b35bc", "#b163da"];
 
@@ -123,6 +126,19 @@ const Wheel = ({ onPremioGanado }) => {
     }, 100); // Espera un poco para asegurarte de que el gráfico se actualiza correctamente
   };
 
+  // Generar un número aleatorio basado en las probabilidades
+  const getRandomSegmentByProbability = () => {
+    const random = Math.random() * 100; // Genera un número entre 0 y 100
+    let cumulativeProbability = 0;
+
+    for (let i = 0; i < probabilities.length; i++) {
+      cumulativeProbability += probabilities[i];
+      if (random <= cumulativeProbability) {
+        return i; // Retorna el índice del segmento seleccionado
+      }
+    }
+  };
+
   const valueGenerator = (angleValue) => {
     for (let i of rotationValues) {
       if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
@@ -155,7 +171,10 @@ const Wheel = ({ onPremioGanado }) => {
     
     audioRef.current.play(); // Reproducir el sonido de giro
 
-    let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
+    const selectedSegmentIndex = getRandomSegmentByProbability(); // Seleccionar segmento basado en la probabilidad
+    const selectedSegment = rotationValues[selectedSegmentIndex];
+
+    let randomDegree = Math.floor(Math.random() * (selectedSegment.maxDegree - selectedSegment.minDegree + 1) + selectedSegment.minDegree);
     let count = 0;
     let resultValue = 101;
 

@@ -65,12 +65,49 @@
   font-weight: 500;
 }
 
+/* Estilos responsivos para pantallas medianas */
 @media screen and (max-width: 768px) {
   .wrapper {
     font-size: 12px;
+    padding: 2em;
   }
 
   .wrapper img {
     right: -5%;
+  }
+
+  #spin-btn {
+    height: 22%;
+    width: 22%;
+    font-size: 1.2em; /* Ajustamos el tamaño de la fuente en el botón */
+  }
+
+  #final-value {
+    font-size: 1.2em; /* Ajustamos el tamaño del texto final */
+    margin-top: 1em;
+  }
+}
+
+/* Estilos responsivos para pantallas pequeñas (móviles) */
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding: 1.5em; /* Reducimos el padding en pantallas pequeñas */
+    box-shadow: 0 2em 3em rgba(27, 8, 53, 0.2);
+  }
+
+  .wrapper img {
+    right: -3%;
+    width: 3em; /* Reducimos el tamaño de la imagen en pantallas pequeñas */
+  }
+
+  #spin-btn {
+    height: 18%;
+    width: 18%;
+    font-size: 1em; /* Ajustamos el tamaño de la fuente en el botón */
+  }
+
+  #final-value {
+    font-size: 1em; /* Ajustamos el tamaño del texto final en pantallas pequeñas */
+    margin-top: 0.8em;
   }
 }

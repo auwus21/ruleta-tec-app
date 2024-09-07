@@ -4,7 +4,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import confetti from "canvas-confetti"; // Importamos la librería de confeti
 import "./wheel.css"; // Importa el archivo CSS
 
-const Wheel = () => {
+const Wheel = ({ onPremioGanado }) => {
   const wheelRef = useRef(null); // Referencia al canvas
   const chartInstanceRef = useRef(null); // Referencia para almacenar la instancia del gráfico
   const [finalValue, setFinalValue] = useState("Apreta el botón girar para comenzar");
@@ -27,13 +27,13 @@ const Wheel = () => {
   ];
 
   const rotationValues = [
-    { minDegree: 0, maxDegree: 30, value: "Un 10% de descuento para tu próxima compra" }, //2
-    { minDegree: 31, maxDegree: 90, value: "Un iPhone 4" }, //1
-    { minDegree: 91, maxDegree: 150, value: "Un esclavo sexual" }, //6
-    { minDegree: 151, maxDegree: 210, value: "Unos Airpods" }, //5
-    { minDegree: 211, maxDegree: 270, value: "Un Producto misterioso" }, //4
-    { minDegree: 271, maxDegree: 330, value: "Sigue participando" }, //3
-    { minDegree: 331, maxDegree: 360, value: "Un 10% de descuento para tu próxima compra" }, //2
+    { minDegree: 0, maxDegree: 30, value: "Un 10% de descuento para tu próxima compra", image: "/img/descuento.png" }, //2
+    { minDegree: 31, maxDegree: 90, value: "Un iPhone 4", image: "/img/iphone.png" }, //1
+    { minDegree: 91, maxDegree: 150, value: "Un esclavo sexual", image: "/img/gabi.png" }, //6
+    { minDegree: 151, maxDegree: 210, value: "Unos Airpods", image: "/img/airpods.png" }, //5
+    { minDegree: 211, maxDegree: 270, value: "Un Producto misterioso", image: "/img/objetomisterioso.png" }, //4
+    { minDegree: 271, maxDegree: 330, value: "Sigue participando", image: "/img/calavera.png" }, //3
+    { minDegree: 331, maxDegree: 360, value: "Un 10% de descuento para tu próxima compra", image: "/img/descuento.png" }, //2
   ];
 
   const data = [16, 16, 16, 16, 16, 16];
@@ -140,6 +140,9 @@ const Wheel = () => {
         // Reproducir el sonido de victoria
         winSoundRef.current.play();
 
+        // Notificar el premio ganado a través de la función prop onPremioGanado
+        onPremioGanado(i.value, i.image);
+
         break;
       }
     }
@@ -188,7 +191,7 @@ const Wheel = () => {
         <button id="spin-btn" onClick={spinWheel} disabled={isSpinning || hasSpun}>
           Girar
         </button>
-        <img src="https://media.discordapp.net/attachments/1136473401800794133/1281429979657277563/ruleta_1.png?ex=66dbb02a&is=66da5eaa&hm=967a4069e38c0610b235a34fdd8419b65348cb805e6bf1fa95a1c8b8a23a4cfa&=&format=webp&quality=lossless&width=48&height=48" alt="spinner-arrow" />
+        <img src="/img/ruleta.svg" alt="spinner-arrow" />
       </div>
       <div id="final-value">
         <p>{finalValue}</p>

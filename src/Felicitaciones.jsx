@@ -15,10 +15,6 @@ const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
       origin: { y: 0.6 },
       colors: ['#bb0000', '#ffffff'],
     });
-
-    // Reproducir sonido
-    const audio = new Audio('/sounds/celebration.mp3');
-    audio.play();
   }, []);
 
   const handleContinuar = () => {

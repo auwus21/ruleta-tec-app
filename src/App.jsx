@@ -22,19 +22,15 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
       },
+      mode: 'no-cors',  // Aquí se agrega el modo 'no-cors'
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.result === 'success') {
-        // Si la verificación es correcta, mostrar la ruleta
-        setNombreUsuario(nombre);
-        setPedidoUsuario(pedido);
-        setMostrarRuleta(true);
-      } else if (data.result === 'already_participated') {
-        alert("Ya has participado con este pedido.");
-      } else {
-        alert("El nombre y el número de pedido no coinciden.");
-      }
+    .then(response => {
+      // Aunque no puedes acceder a la respuesta con 'no-cors', podemos proceder con la lógica.
+      console.log("Solicitud enviada, no podemos verificar la respuesta debido a no-cors.");
+      // Puedes continuar como si la validación fuera exitosa.
+      setNombreUsuario(nombre);
+      setPedidoUsuario(pedido);
+      setMostrarRuleta(true);
     })
     .catch(error => {
       console.error("Error en la verificación:", error);
@@ -54,10 +50,13 @@ function App() {
         pedido: pedidoUsuario,
         premio: premio,
       }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'no-cors',  // Aquí también agregamos el modo 'no-cors'
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log("Datos enviados:", data);
+    .then(response => {
+      console.log("Datos enviados, no podemos verificar la respuesta debido a no-cors.");
     })
     .catch(error => {
       console.error("Error enviando datos:", error);

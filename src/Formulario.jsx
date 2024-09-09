@@ -7,7 +7,22 @@ function Formulario({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(nombre, pedido); // Pasamos el nombre y el pedido al onSubmit en App.jsx
+    
+    // Validar que no haya campos vacíos
+    if (nombre.trim() === '' || pedido.trim() === '') {
+      alert("Por favor, completa todos los campos.");
+      return;
+    }
+
+    // Validar que el número de pedido siga el formato correcto
+    const pedidoRegex = /^P[0-9]{6}$/;
+    if (!pedidoRegex.test(pedido)) {
+      alert("El número de pedido debe seguir el formato PXXXXXX.");
+      return;
+    }
+
+    // Enviar los datos al componente padre (App.jsx)
+    onSubmit(nombre.trim(), pedido.trim()); // Asegúrate de que no haya espacios en blanco al principio o al final
   };
 
   return (

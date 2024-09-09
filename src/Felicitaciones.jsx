@@ -5,9 +5,9 @@ import whatsappIcon from '/img/whatsapp.png'; // Asegúrate de que el ícono est
 
 const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
   const [mostrarAgradecimiento, setMostrarAgradecimiento] = useState(false);
-
+  
   useEffect(() => {
-    // Lanzar confeti al aparecer el componente
+    console.log("Componente Felicitaciones renderizado");
     confetti({
       particleCount: 150,
       spread: 100,
@@ -15,6 +15,7 @@ const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
       colors: ['#bb0000', '#ffffff'],
     });
   }, []);
+  
 
   const handleContinuar = () => {
     setMostrarAgradecimiento(true); // Muestra la pantalla de agradecimiento

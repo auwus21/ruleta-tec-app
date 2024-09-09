@@ -15,61 +15,69 @@ function App() {
 
   // Función para manejar el envío del formulario y realizar la validación
   const handleFormSubmit = (nombre, pedido) => {
-    // Realizar solicitud al Apps Script a través del proxy CORS
-    fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbxPNR9q-eoybvzQXX1S52cax-CI3pEegYmamVOK6GDoKkeW8ZSv0M4FRPjLk5OWsDqL/exec', {
+    fetch('http://localhost:3000/api/submit', {
       method: 'POST',
       body: JSON.stringify({ nombre, pedido }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     })
-    .then(response => response.json())  // Ahora verificamos la respuesta
+    .then(response => response.json())
     .then(data => {
-      if (data.result === 'success') {
-        // Si la verificación es correcta, mostrar la ruleta
+      if (data.result === 'validated') {
+        // Mostramos la ruleta si es la primera vez que participa
         setNombreUsuario(nombre);
         setPedidoUsuario(pedido);
         setMostrarRuleta(true);
+      } else if (data.result === 'invalid') {
+        alert("El nombre o pedido no coinciden.");
       } else if (data.result === 'already_participated') {
-        alert("Ya has participado con este pedido.");
+        alert("Ya has participado con este pedido. No puedes volver a jugar.");
+      } else if (data.result === 'error') {
+        alert(`Error: ${data.message}`);
       } else {
-        alert("El nombre y el número de pedido no coinciden.");
+        // Manejo de respuestas inesperadas
+        alert("Ocurrió un error inesperado. Por favor, intenta nuevamente.");
       }
     })
     .catch(error => {
       console.error("Error en la verificación:", error);
+      alert("Error en la verificación. Por favor, intenta nuevamente.");
     });
   };
 
   // Función para manejar el resultado de la ruleta y enviar los datos a Google Sheets
   const handlePremioGanado = (premio, imagen) => {
-    setPremioGanado(premio);
-    setImagenPremio(imagen);
-
-    // Enviar los datos del premio a Google Sheets
-    fetch("https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbxPNR9q-eoybvzQXX1S52cax-CI3pEegYmamVOK6GDoKkeW8ZSv0M4FRPjLk5OWsDqL/exec", {
-      method: "POST",
+    // Registramos el premio en el servidor
+    fetch('http://localhost:3000/api/submitPremio', {
+      method: 'POST',
       body: JSON.stringify({
         nombre: nombreUsuario,
         pedido: pedidoUsuario,
         premio: premio,
       }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     })
     .then(response => response.json())
     .then(data => {
-      console.log("Datos enviados correctamente:", data);
+      if (data.result === 'success') {
+        console.log("Premio registrado exitosamente.");
+        setPremioGanado(premio);
+        setImagenPremio(imagen);
+        setMostrarFelicitaciones(true);
+      } else if (data.result === 'already_participated') {
+        alert("Ya has participado con este pedido y tu premio ya fue registrado.");
+      } else if (data.result === 'invalid') {
+        alert("Datos inválidos al registrar el premio.");
+      } else if (data.result === 'error') {
+        alert(`Error al registrar el premio: ${data.message}`);
+      } else {
+        // Manejo de respuestas inesperadas
+        alert("Ocurrió un error inesperado al registrar el premio.");
+      }
     })
     .catch(error => {
-      console.error("Error enviando datos:", error);
+      console.error("Error enviando datos del premio:", error);
+      alert("Error enviando datos del premio. Por favor, intenta nuevamente.");
     });
-
-    // Agregar un retraso de 2 segundos antes de mostrar el componente de felicitaciones
-    setTimeout(() => {
-      setMostrarFelicitaciones(true);
-    }, 1000); // 1000 milisegundos = 1 segundo
   };
 
   return (

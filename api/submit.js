@@ -12,6 +12,12 @@ export default async function handler(req, res) {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    // Verificar si el servidor respondió con un estado exitoso
+    if (!response.ok) {
+      console.error("Error en la respuesta del servidor:", response.status, response.statusText);
+      return res.status(response.status).json({ result: 'error', message: 'Error en la solicitud al servidor.' });
+    }
+
     const data = await response.json();
     console.log("Respuesta desde Google Apps Script (Validación):", data);
 

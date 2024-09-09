@@ -7,7 +7,6 @@ import './formulario.css';
 
 const API_URL = 'https://ruleta-tec-app.vercel.app/api';
 
-
 function App() {
   const [mostrarRuleta, setMostrarRuleta] = useState(false); 
   const [nombreUsuario, setNombreUsuario] = useState(''); 
@@ -18,17 +17,14 @@ function App() {
 
   // Función para manejar el envío del formulario y realizar la validación
   const handleFormSubmit = (nombre, pedido) => {
-    fetch('${API_URL}/submit.js', {
+    fetch(`${API_URL}/submit.js`, {  // <-- Cambié las comillas por backticks
       method: 'POST',
       body: JSON.stringify({ nombre, pedido }),
       headers: { 'Content-Type': 'application/json' },
     })
-    
-    
     .then(response => response.json())
     .then(data => {
       if (data.result === 'validated') {
-        // Mostramos la ruleta si es la primera vez que participa
         setNombreUsuario(nombre);
         setPedidoUsuario(pedido);
         setMostrarRuleta(true);
@@ -39,7 +35,6 @@ function App() {
       } else if (data.result === 'error') {
         alert(`Error: ${data.message}`);
       } else {
-        // Manejo de respuestas inesperadas
         alert("Ocurrió un error inesperado. Por favor, intenta nuevamente.");
       }
     })
@@ -51,8 +46,7 @@ function App() {
 
   // Función para manejar el resultado de la ruleta y enviar los datos a Google Sheets
   const handlePremioGanado = (premio, imagen) => {
-    // Registramos el premio en el servidor
-    fetch('${API_URL}/submitPremio.js', {
+    fetch(`${API_URL}/submitPremio.js`, {  // <-- Cambié las comillas por backticks
       method: 'POST',
       body: JSON.stringify({
         nombre: nombreUsuario,
@@ -61,7 +55,6 @@ function App() {
       }),
       headers: { 'Content-Type': 'application/json' },
     })
-    
     .then(response => response.json())
     .then(data => {
       if (data.result === 'success') {
@@ -76,7 +69,6 @@ function App() {
       } else if (data.result === 'error') {
         alert(`Error al registrar el premio: ${data.message}`);
       } else {
-        // Manejo de respuestas inesperadas
         alert("Ocurrió un error inesperado al registrar el premio.");
       }
     })

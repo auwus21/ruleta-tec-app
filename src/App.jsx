@@ -17,7 +17,7 @@ function App() {
 
   // Función para manejar el envío del formulario y realizar la validación
   const handleFormSubmit = (nombre, pedido) => {
-    fetch(`${API_URL}/submit.js`, {  // <-- Cambié las comillas por backticks
+    fetch(`${API_URL}/submit`, {  // <-- Cambié las comillas por backticks
       method: 'POST',
       body: JSON.stringify({ nombre, pedido }),
       headers: { 'Content-Type': 'application/json' },
@@ -46,7 +46,7 @@ function App() {
 
   // Función para manejar el resultado de la ruleta y enviar los datos a Google Sheets
   const handlePremioGanado = (premio, imagen) => {
-    fetch(`${API_URL}/submitPremio.js`, {  // <-- Cambié las comillas por backticks
+    fetch(`${API_URL}/submitPremio`, {  // <-- Cambié las comillas por backticks
       method: 'POST',
       body: JSON.stringify({
         nombre: nombreUsuario,

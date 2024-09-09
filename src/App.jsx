@@ -15,19 +15,16 @@ function App() {
 
   // Función para manejar el envío del formulario y realizar la validación
   const handleFormSubmit = (nombre, pedido) => {
-    // Realizar solicitud al Apps Script para verificar nombre y pedido
     fetch('https://script.google.com/macros/s/AKfycbxPNR9q-eoybvzQXX1S52cax-CI3pEegYmamVOK6GDoKkeW8ZSv0M4FRPjLk5OWsDqL/exec', {
       method: 'POST',
       body: JSON.stringify({ nombre, pedido }),
       headers: {
         'Content-Type': 'application/json',
       },
-      mode: 'no-cors',  // Aquí se agrega el modo 'no-cors'
+      mode: 'no-cors',
     })
     .then(response => {
-      // Aunque no puedes acceder a la respuesta con 'no-cors', podemos proceder con la lógica.
       console.log("Solicitud enviada, no podemos verificar la respuesta debido a no-cors.");
-      // Puedes continuar como si la validación fuera exitosa.
       setNombreUsuario(nombre);
       setPedidoUsuario(pedido);
       setMostrarRuleta(true);
@@ -36,7 +33,7 @@ function App() {
       console.error("Error en la verificación:", error);
     });
   };
-
+  
   // Función para manejar el resultado de la ruleta y enviar los datos a Google Sheets
   const handlePremioGanado = (premio, imagen) => {
     setPremioGanado(premio);

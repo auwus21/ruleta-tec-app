@@ -5,7 +5,7 @@ import Felicitaciones from './Felicitaciones';
 import './fondo.css';
 import './formulario.css';
 
-const API_URL = 'https://tu-proyecto.vercel.app/api';
+const API_URL = 'https://ruleta-tec-app.vercel.app//api';
 
 
 function App() {

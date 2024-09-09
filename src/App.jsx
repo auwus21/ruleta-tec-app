@@ -8,32 +8,39 @@ import './formulario.css';
 function App() {
   const [mostrarRuleta, setMostrarRuleta] = useState(false); 
   const [nombreUsuario, setNombreUsuario] = useState(''); 
-  const [pedidoUsuario, setPedidoUsuario] = useState(''); // Nueva variable para el número de pedido
+  const [pedidoUsuario, setPedidoUsuario] = useState(''); 
   const [premioGanado, setPremioGanado] = useState(''); 
   const [imagenPremio, setImagenPremio] = useState('');
   const [mostrarFelicitaciones, setMostrarFelicitaciones] = useState(false); 
 
   // Función para manejar el envío del formulario y realizar la validación
   const handleFormSubmit = (nombre, pedido) => {
+    // Realizar solicitud al Apps Script para verificar nombre y pedido
     fetch('https://script.google.com/macros/s/AKfycbxPNR9q-eoybvzQXX1S52cax-CI3pEegYmamVOK6GDoKkeW8ZSv0M4FRPjLk5OWsDqL/exec', {
       method: 'POST',
       body: JSON.stringify({ nombre, pedido }),
       headers: {
         'Content-Type': 'application/json',
       },
-      mode: 'no-cors',
     })
-    .then(response => {
-      console.log("Solicitud enviada, no podemos verificar la respuesta debido a no-cors.");
-      setNombreUsuario(nombre);
-      setPedidoUsuario(pedido);
-      setMostrarRuleta(true);
+    .then(response => response.json())  // Ahora verificamos la respuesta
+    .then(data => {
+      if (data.result === 'success') {
+        // Si la verificación es correcta, mostrar la ruleta
+        setNombreUsuario(nombre);
+        setPedidoUsuario(pedido);
+        setMostrarRuleta(true);
+      } else if (data.result === 'already_participated') {
+        alert("Ya has participado con este pedido.");
+      } else {
+        alert("El nombre y el número de pedido no coinciden.");
+      }
     })
     .catch(error => {
       console.error("Error en la verificación:", error);
     });
   };
-  
+
   // Función para manejar el resultado de la ruleta y enviar los datos a Google Sheets
   const handlePremioGanado = (premio, imagen) => {
     setPremioGanado(premio);
@@ -50,10 +57,10 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
       },
-      mode: 'no-cors',  // Aquí también agregamos el modo 'no-cors'
     })
-    .then(response => {
-      console.log("Datos enviados, no podemos verificar la respuesta debido a no-cors.");
+    .then(response => response.json())
+    .then(data => {
+      console.log("Datos enviados correctamente:", data);
     })
     .catch(error => {
       console.error("Error enviando datos:", error);

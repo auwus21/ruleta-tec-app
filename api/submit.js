@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
   const { nombre, pedido } = req.body;
@@ -18,17 +18,27 @@ export default async function handler(req, res) {
       return res.status(response.status).json({ result: 'error', message: 'Error en la solicitud al servidor.' });
     }
 
-    const data = await response.json();
-    console.log("Respuesta desde Google Apps Script (Validación):", data);
+    // Aquí agregamos el código para obtener la respuesta como texto y luego imprimirla
+    const text = await response.text();
+    console.log("Respuesta del servidor:", text);
 
-    if (data.result === 'already_participated') {
-      return res.status(200).json({ result: 'already_participated' });
-    } else if (data.result === 'invalid') {
-      return res.status(200).json({ result: 'invalid' });
-    } else if (data.result === 'validated') {
-      return res.status(200).json({ result: 'validated' });
-    } else {
-      return res.status(500).json({ result: 'error', message: 'Respuesta inesperada del servidor.' });
+    // Intentar convertir la respuesta a JSON
+    try {
+      const data = JSON.parse(text); // Cambiamos a JSON.parse en lugar de response.json()
+      console.log("Datos JSON desde Google Apps Script (Validación):", data);
+
+      if (data.result === 'already_participated') {
+        return res.status(200).json({ result: 'already_participated' });
+      } else if (data.result === 'invalid') {
+        return res.status(200).json({ result: 'invalid' });
+      } else if (data.result === 'validated') {
+        return res.status(200).json({ result: 'validated' });
+      } else {
+        return res.status(500).json({ result: 'error', message: 'Respuesta inesperada del servidor.' });
+      }
+    } catch (error) {
+      console.error("Error al convertir la respuesta a JSON:", error);
+      return res.status(500).json({ result: 'error', message: 'La respuesta del servidor no es JSON válido.' });
     }
   } catch (error) {
     console.error("Error en la solicitud al Apps Script (Validación):", error);

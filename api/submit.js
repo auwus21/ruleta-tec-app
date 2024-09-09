@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
 export default async function handler(req, res) {
   const { nombre, pedido } = req.body;
@@ -26,6 +26,6 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     console.error("Error en la solicitud al Apps Script (Validación):", error);
-    res.status(500).json({ result: 'error', message: error.message });
+    return res.status(500).json({ result: 'error', message: error.message });
   }
 }

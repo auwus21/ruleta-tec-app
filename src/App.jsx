@@ -15,11 +15,12 @@ function App() {
 
   // Función para manejar el envío del formulario y realizar la validación
   const handleFormSubmit = (nombre, pedido) => {
-    fetch('/api/submit', {
+    fetch('https://ruleta-tec-app.vercel.app/api/submit', {
       method: 'POST',
       body: JSON.stringify({ nombre, pedido }),
       headers: { 'Content-Type': 'application/json' },
     })
+    
     
     .then(response => response.json())
     .then(data => {
@@ -48,7 +49,7 @@ function App() {
   // Función para manejar el resultado de la ruleta y enviar los datos a Google Sheets
   const handlePremioGanado = (premio, imagen) => {
     // Registramos el premio en el servidor
-    fetch('/api/submitPremio', {
+    fetch('https://ruleta-tec-app.vercel.app/api/submitPremio', {
       method: 'POST',
       body: JSON.stringify({
         nombre: nombreUsuario,

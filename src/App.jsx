@@ -15,8 +15,8 @@ function App() {
 
   // Función para manejar el envío del formulario y realizar la validación
   const handleFormSubmit = (nombre, pedido) => {
-    // Realizar solicitud al Apps Script para verificar nombre y pedido
-    fetch('https://script.google.com/macros/s/AKfycbxPNR9q-eoybvzQXX1S52cax-CI3pEegYmamVOK6GDoKkeW8ZSv0M4FRPjLk5OWsDqL/exec', {
+    // Realizar solicitud al Apps Script a través del proxy CORS
+    fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbxPNR9q-eoybvzQXX1S52cax-CI3pEegYmamVOK6GDoKkeW8ZSv0M4FRPjLk5OWsDqL/exec', {
       method: 'POST',
       body: JSON.stringify({ nombre, pedido }),
       headers: {
@@ -47,7 +47,7 @@ function App() {
     setImagenPremio(imagen);
 
     // Enviar los datos del premio a Google Sheets
-    fetch("https://script.google.com/macros/s/AKfycbxPNR9q-eoybvzQXX1S52cax-CI3pEegYmamVOK6GDoKkeW8ZSv0M4FRPjLk5OWsDqL/exec", {
+    fetch("https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbxPNR9q-eoybvzQXX1S52cax-CI3pEegYmamVOK6GDoKkeW8ZSv0M4FRPjLk5OWsDqL/exec", {
       method: "POST",
       body: JSON.stringify({
         nombre: nombreUsuario,

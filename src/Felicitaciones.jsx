@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import './felicitaciones.css';
 import whatsappIcon from '/img/whatsapp.png'; // Asegúrate de que el ícono esté en la carpeta correcta
-import instagramIcon from '/img/instagram.png'; // Asegúrate de que el ícono esté en la carpeta correcta
 
 const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
   const [mostrarAgradecimiento, setMostrarAgradecimiento] = useState(false);
@@ -48,17 +47,6 @@ const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
               rel="noopener noreferrer"
             >
               <img src={whatsappIcon} alt="WhatsApp" className="social-icon" />
-            </a>
-            <a
-              href="https://www.instagram.com/tecstore.arg/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={instagramIcon}
-                alt="Instagram"
-                className="social-icon"
-              />
             </a>
           </div>
         </div>

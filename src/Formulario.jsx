@@ -3,10 +3,11 @@ import './formulario.css';
 
 function Formulario({ onSubmit }) {
   const [nombre, setNombre] = useState('');
+  const [pedido, setPedido] = useState(''); // Estado para el número de pedido
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(nombre); // Pasamos el nombre al onSubmit en App.jsx
+    onSubmit(nombre, pedido); // Pasamos el nombre y el pedido al onSubmit en App.jsx
   };
 
   return (
@@ -23,18 +24,6 @@ function Formulario({ onSubmit }) {
           required
         />
 
-        <label htmlFor="tel">Teléfono:</label>
-        <input
-          type="tel"
-          id="tel"
-          name="tel"
-          pattern="[0-9]{1,12}"
-          maxLength="12"
-          minLength="10"
-          placeholder="Ingrese tu número sin incluir +54"
-          required
-        />
-
         <label htmlFor="pedido">Número de pedido:</label>
         <input
           type="text"
@@ -44,6 +33,8 @@ function Formulario({ onSubmit }) {
           maxLength="7"
           minLength="7"
           placeholder="Código de pedido (PXXXXXX)"
+          value={pedido} // Capturamos el valor del input de pedido
+          onChange={(e) => setPedido(e.target.value)}
           required
         />
 

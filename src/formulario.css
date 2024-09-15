@@ -64,6 +64,22 @@ button[type="submit"]:hover {
   text-align: center; /* Centra el texto en pantallas pequeñas */
 }
 
+#tyc {
+  color: #ff4081; /* Cambia el color a rosa o a cualquier color llamativo */
+  font-weight: bold; /* Hacer la fuente más gruesa */
+  text-decoration: underline; /* Subrayar el enlace */
+  background-color: rgba(255, 64, 129, 0.1); /* Fondo suave rosa */
+  padding: 2px 5px; /* Un pequeño padding para que el fondo sea visible */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease; /* Transición suave en el hover */
+}
+
+#tyc:hover {
+  background-color: rgba(255, 64, 129, 0.2); /* Cambia el fondo al pasar el mouse */
+}
+
+
+
 /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 768px) {
   form {

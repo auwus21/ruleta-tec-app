@@ -55,7 +55,8 @@ function Formulario({ onSubmit }) {
 
         <button type="submit">Enviar</button>
         <div className="term">
-        El código y el número de pedido están en tu compra, solo es valido una tirada por compra!
+        Solicitá el código y el número de pedido.
+        Al participar, estás aceptando los<a id="tyc" href="">términos y condiciones.</a>
         </div>
       </form>
     </div>

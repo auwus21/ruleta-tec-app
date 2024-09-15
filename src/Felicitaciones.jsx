@@ -25,7 +25,7 @@ const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
     <div className="felicitaciones-overlay">
       {!mostrarAgradecimiento ? (
         <div className="felicitaciones-container">
-          <h2>¡Felicitaciones!</h2>
+          <h2>¡{premio === "Sera la proxima..." ? "Será la próxima..." : `Felicitaciones ${nombre}`}!</h2>
           <div className="premio-container">
             <img src={imagenPremio} alt={premio} className="imagen-premio" />
             {premio !== "Sera la proxima..." && <p>Ganaste: {premio}</p>}
@@ -36,7 +36,7 @@ const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
         </div>
       ) : (
         <div className="agradecimiento-container">
-          <h2>Muchas Gracias por participar de la ruleta Tec Store Arg</h2>
+          <h2>Muchas Gracias por participar de la ruleta Tec Store</h2>
           <p>
             Para reclamar tu premio comunicate por alguna de nuestras redes
             mandando el código de pedido y tu nombre completo.

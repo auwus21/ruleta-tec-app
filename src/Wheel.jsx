@@ -28,7 +28,7 @@ const Wheel = ({ onPremioGanado }) => {
 
   const rotationValues = [
     { minDegree: 0, maxDegree: 30, value: "Un 10% de descuento para tu próxima compra", image: "/img/descuento.png" }, //2
-    { minDegree: 31, maxDegree: 90, value: "Un iPhone 4", image: "/img/iphone.png" }, //1
+    { minDegree: 31, maxDegree: 90, value: "Premio Menor", image: "/img/PremioMenor.png" }, //1
     { minDegree: 91, maxDegree: 150, value: "Un esclavo sexual", image: "/img/gabi.png" }, //6
     { minDegree: 151, maxDegree: 210, value: "Unos Airpods", image: "/img/airpods.png" }, //5
     { minDegree: 211, maxDegree: 270, value: "Un Producto misterioso", image: "/img/objetomisterioso.png" }, //4

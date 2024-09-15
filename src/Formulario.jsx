@@ -33,7 +33,7 @@ function Formulario({ onSubmit }) {
           type="text"
           id="nombre"
           name="nombre"
-          placeholder="Ingrese el codigo de tirada"
+          placeholder="Ingrese el codigo de tirada (RXXXX)"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)} // Capturamos el valor del input
           required

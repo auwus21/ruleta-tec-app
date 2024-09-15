@@ -55,7 +55,6 @@ function Formulario({ onSubmit }) {
 
         <button type="submit">Enviar</button>
         <div className="term">
-        Solicitá el código y el número de pedido.
         Al participar, estás aceptando los<a id="tyc" href="">términos y condiciones.</a>
         </div>
       </form>

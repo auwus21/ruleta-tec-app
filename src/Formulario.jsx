@@ -28,12 +28,12 @@ function Formulario({ onSubmit }) {
   return (
     <div id="formulario">
       <form id="miFormulario" onSubmit={handleSubmit}>
-        <label htmlFor="nombre">Nombre:</label>
+        <label htmlFor="nombre">Codigo:</label>
         <input
           type="text"
           id="nombre"
           name="nombre"
-          placeholder="Ingrese su nombre completo"
+          placeholder="Ingrese el codigo de tirada"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)} // Capturamos el valor del input
           required
@@ -47,7 +47,7 @@ function Formulario({ onSubmit }) {
           pattern="P[0-9]{6}"
           maxLength="7"
           minLength="7"
-          placeholder="Código de pedido (PXXXXXX)"
+          placeholder="Número de pedido (PXXXXXX)"
           value={pedido} // Capturamos el valor del input de pedido
           onChange={(e) => setPedido(e.target.value)}
           required
@@ -55,7 +55,7 @@ function Formulario({ onSubmit }) {
 
         <button type="submit">Enviar</button>
         <div className="term">
-          El código de pedido lo puedes encontrar en tu compra. Solo es válida una tirada por pedido.
+        El código y el número de pedido están en tu compra, solo es valido una tirada por compra!
         </div>
       </form>
     </div>

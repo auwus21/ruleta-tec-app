@@ -142,7 +142,7 @@ const Wheel = ({ onPremioGanado }) => {
   const valueGenerator = (angleValue) => {
     for (let i of rotationValues) {
       if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-        setFinalValue(`Ganaste: ${i.value}`);
+        setFinalValue(`${i.value}`);
         setIsSpinning(false);
         setHasSpun(true); // Desactivar la ruleta después del giro
 

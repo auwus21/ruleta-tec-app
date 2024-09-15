@@ -55,8 +55,12 @@ function Formulario({ onSubmit }) {
 
         <button type="submit">Enviar</button>
         <div className="term">
-        Al participar, estás aceptando los<a id="tyc" href="">términos y condiciones.</a>
-        </div>
+  Al participar, estás aceptando los
+  <a id="tyc" href="/pdf/tyc.pdf" target="_blank" rel="noopener noreferrer">
+    términos y condiciones.
+  </a>
+</div>
+
       </form>
     </div>
   );

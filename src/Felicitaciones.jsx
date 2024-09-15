@@ -25,7 +25,7 @@ const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
     <div className="felicitaciones-overlay">
       {!mostrarAgradecimiento ? (
         <div className="felicitaciones-container">
-          <h2>¡{premio === "Sera la proxima..." ? "Será la próxima..." : `Felicitaciones ${nombre}`}!</h2>
+          <h2>¡{premio === "Sera la proxima..." ? "Será la próxima..." : `Felicitaciones`}!</h2>
           <div className="premio-container">
             <img src={imagenPremio} alt={premio} className="imagen-premio" />
             {premio !== "Sera la proxima..." && <p>Ganaste: {premio}</p>}

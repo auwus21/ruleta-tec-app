@@ -28,7 +28,7 @@ const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
           <h2>¡Felicitaciones {nombre}!</h2>
           <div className="premio-container">
             <img src={imagenPremio} alt={premio} className="imagen-premio" />
-            <p>Ganaste: {premio}</p>
+            {premio !== "Sera la proxima..." && <p>Ganaste: {premio}</p>}
           </div>
           <button className="continuar-btn" onClick={handleContinuar}>
             Continuar
@@ -53,7 +53,7 @@ const Felicitaciones = ({ nombre, premio, imagenPremio }) => {
         </div>
       )}
     </div>
-  );
+  );  
 };
 
 export default Felicitaciones;

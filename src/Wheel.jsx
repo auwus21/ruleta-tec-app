@@ -32,7 +32,7 @@ const Wheel = ({ onPremioGanado }) => {
     { minDegree: 91, maxDegree: 150, value: "Un esclavo sexual", image: "/img/gabi.png" }, //6
     { minDegree: 151, maxDegree: 210, value: "Unos Airpods", image: "/img/airpods.png" }, //5
     { minDegree: 211, maxDegree: 270, value: "Un Producto misterioso", image: "/img/objetomisterioso.png" }, //4
-    { minDegree: 271, maxDegree: 330, value: "Sigue participando", image: "/img/calavera.png" }, //3
+    { minDegree: 271, maxDegree: 330, value: "Sera la proxima...", image: "/img/calavera.png" }, //3
     { minDegree: 331, maxDegree: 360, value: "Un 10% de descuento para tu próxima compra", image: "/img/descuento.png" }, //2
   ];
 

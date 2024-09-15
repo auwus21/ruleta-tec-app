@@ -29,7 +29,7 @@ function App() {
         setPedidoUsuario(pedido);
         setMostrarRuleta(true);
       } else if (data.result === 'invalid') {
-        alert("El nombre o pedido no coinciden.");
+        alert("El codigo o pedido no coinciden.");
       } else if (data.result === 'already_participated') {
         alert("Ya has participado con este pedido. No puedes volver a jugar.");
       } else if (data.result === 'error') {

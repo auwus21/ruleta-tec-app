@@ -18,26 +18,26 @@ const Wheel = ({ onPremioGanado }) => {
 
   // Ruta de las imágenes que se mostrarán en cada segmento
   const imageSources = [
-    "/img/iphone.png", // Imagen para el segmento 1
-    "/img/descuento.png", // Imagen para el segmento 2
-    "/img/calavera.png", // Imagen para el segmento 3
-    "/img/objetomisterioso.png", // Imagen para el segmento 4
-    "/img/airpods.png", // Imagen para el segmento 5
-    "/img/gabi.png", // Imagen para el segmento 6
+    "/img/PremioMenor.png", // Imagen para el segmento 1
+    "/img/5descuento.png", // Imagen para el segmento 2
+    "/img/PlayoIphone.png", // Imagen para el segmento 3
+    "/img/10usd.png", // Imagen para el segmento 4
+    "/img/PremioMayor.png", // Imagen para el segmento 5
+    "/img/SeguiParticipando.png", // Imagen para el segmento 6
   ];
 
   const rotationValues = [
-    { minDegree: 0, maxDegree: 30, value: "Un 10% de descuento para tu próxima compra", image: "/img/descuento.png" }, //2
+    { minDegree: 0, maxDegree: 30, value: "Un 5% de descuento para tu compra", image: "/img/5descuento.png" }, //2
     { minDegree: 31, maxDegree: 90, value: "Premio Menor", image: "/img/PremioMenor.png" }, //1
-    { minDegree: 91, maxDegree: 150, value: "Un esclavo sexual", image: "/img/gabi.png" }, //6
-    { minDegree: 151, maxDegree: 210, value: "Unos Airpods", image: "/img/airpods.png" }, //5
-    { minDegree: 211, maxDegree: 270, value: "Un Producto misterioso", image: "/img/objetomisterioso.png" }, //4
-    { minDegree: 271, maxDegree: 330, value: "Sera la proxima...", image: "/img/calavera.png" }, //3
-    { minDegree: 331, maxDegree: 360, value: "Un 10% de descuento para tu próxima compra", image: "/img/descuento.png" }, //2
+    { minDegree: 91, maxDegree: 150, value: "Sera la proxima...", image: "/img/SeguiParticipando.png" }, //6
+    { minDegree: 151, maxDegree: 210, value: "Premio Mayor", image: "/img/PremioMayor.png" }, //5
+    { minDegree: 211, maxDegree: 270, value: "$10 usd de descuento para tu compra", image: "/img/10usd.png" }, //4
+    { minDegree: 271, maxDegree: 330, value: "PlayStation 5 o IPhone", image: "/img/PlayoIphone.png" }, //3
+    { minDegree: 331, maxDegree: 360, value: "5% de descuento para tu compra", image: "/img/5descuento.png" }, //2
   ];
 
   // Definir probabilidades en porcentaje para cada segmento
-  const probabilities = [1, 1, 1, 1, 1, 95]; // Porcentajes asignados a cada segmento 2,1,6,5,4,3
+  const probabilities = [40, 11, 5, 4, 40, 0]; // Porcentajes asignados a cada segmento 2,1,6,5,4,3
 
   const data = [16, 16, 16, 16, 16, 16];
   const pieColors = ["#8b35bc", "#b163da", "#8b35bc", "#b163da", "#8b35bc", "#b163da"];
@@ -77,7 +77,7 @@ const Wheel = ({ onPremioGanado }) => {
           loadedImages.forEach((img, i) => {
             const meta = chart.getDatasetMeta(0).data[i];
             const { x, y } = meta.tooltipPosition(); // Obtiene la posición del centro del segmento
-            const size = 50; // Tamaño de la imagen
+            const size = 70; // Tamaño de la imagen
             const halfSize = size / 2;
 
             ctx.save();

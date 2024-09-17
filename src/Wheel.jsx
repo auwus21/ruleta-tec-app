@@ -37,7 +37,7 @@ const Wheel = ({ onPremioGanado }) => {
   ];
 
   // Definir probabilidades en porcentaje para cada segmento
-  const probabilities = [40, 11, 5, 4, 40, 0]; // Porcentajes asignados a cada segmento 2,1,6,5,4,3
+  const probabilities = [44, 5, 5, 2, 44, 0]; // Porcentajes asignados a cada segmento 2,1,6,5,4,3
 
   const data = [16, 16, 16, 16, 16, 16];
   const pieColors = ["#8b35bc", "#b163da", "#8b35bc", "#b163da", "#8b35bc", "#b163da"];
